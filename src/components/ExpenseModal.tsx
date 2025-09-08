@@ -1,28 +1,31 @@
 import { Fragment } from 'react'
 import { Plus } from 'lucide-react'
 import { Dialog, Transition } from '@headlessui/react'
+import { useBudget } from '../hooks/useBudget'
 
 export default function ExpenseModal() {
+  const {state, dispatch} = useBudget()
 
   return (
     <>
       <div className="fixed right-5 bottom-5 flex items-center justify-center">
         <button
           type="button"
+          onClick={() =>  dispatch({type: 'show-modal'})}
         >
           <Plus className='w-14 h-14 bg-blue-600 text-white p-2 rounded-full cursor-pointer' />
         </button>
       </div>
 
-      <Transition appear show={false} as={Fragment}>
+      <Transition appear show={state.modal} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={() => {}}>
           <Transition.Child
             as={Fragment} 
             enter="ease-out duration-300"
             enterFrom="opacity-0"
-            enterTo="opacity-100"
+            enterTo="opacity-75"
             leave="ease-in duration-200"
-            leaveFrom="opacity-100"
+            leaveFrom="opacity-75"
             leaveTo="opacity-0"
           >
             <div className="fixed inset-0 bg-black opacity-75" />
