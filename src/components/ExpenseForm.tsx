@@ -1,9 +1,10 @@
-import { useState } from "react"
+import { useState, type ChangeEvent, type FormEvent } from "react"
 import DatePicker from 'react-date-picker'
 import 'react-date-picker/dist/DatePicker.css'
 import 'react-calendar/dist/Calendar.css'
 import { categories } from "../data/categories"
-import type { DraftExpense } from "../types"
+import type { DraftExpense, Value } from "../types"
+import ErrorMessage from "./ErrorMessage"
 
 function ExpenseForm() {
   const [expense, setExpense] = useState<DraftExpense>({
@@ -12,14 +13,49 @@ function ExpenseForm() {
     category: '',
     date: new Date()
   })
+  const [error, setError] = useState('')
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) => {
+    const {name, value} = e.target
+    const isAmountField = ['amount'].includes(name)
+
+    setExpense({
+      ...expense,
+      [name] : isAmountField ? +value : value 
+    })
+  }
+
+  const handleChangeDate = (value : Value) => {
+    setExpense({
+      ...expense,
+      date: value
+    })
+  }
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    if(Object.values(expense).includes('')) {
+      setError('Todos los campos son obligatorios')
+
+      setTimeout(() => {
+        setError('')
+      }, 3000);
+      return
+    }
+
+    console.log('todo bien')
+  }
 
   return (
-    <form className="space-y-3">
+    <form className="space-y-3" onSubmit={handleSubmit}>
       <legend
         className="uppercase text-center text-2xl font-black p-2 border-b-2 border-b-gray-400 "
       >
         Nuevo Gasto
       </legend>
+
+      {error && <ErrorMessage>{error}</ErrorMessage> }
 
       <div className="flex flex-col gap-2">
         <label
@@ -36,6 +72,7 @@ function ExpenseForm() {
           className="bg-gray-100 p-2 rounded-md"
           placeholder="Agrega el nombre del gasto. Ej. Netflix"
           value={expense.expenseName}
+          onChange={handleChange}
         />
       </div>
 
@@ -54,6 +91,7 @@ function ExpenseForm() {
           className="bg-gray-100 p-2 rounded-md"
           placeholder="Agrega la cantidad del gasto. Ej. 300"
           value={expense.amount}
+          onChange={handleChange}
         />
       </div>
 
@@ -70,6 +108,7 @@ function ExpenseForm() {
           name="category"
           className="bg-gray-100 p-2 rounded-md"
           value={expense.category}
+          onChange={handleChange}
         >
           <option value="">-- Seleccione --</option>
           {categories.map(category => (
@@ -87,8 +126,9 @@ function ExpenseForm() {
         </label>
 
         <DatePicker
-          className="bg-gray-100 p-2 border-0"
+          className="bg-gray-100 p-2 border-0 rounded-md"
           value={expense.date}
+          onChange={handleChangeDate}
         />
       </div>
 
