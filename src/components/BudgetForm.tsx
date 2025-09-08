@@ -4,7 +4,7 @@ function BudgetForm() {
   const [budget, setBudget] = useState(0)
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setBudget(+e.target.value)
+    setBudget (+e.target.value)
   }
 
   return (
