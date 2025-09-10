@@ -47,7 +47,7 @@ function ExpenseDetail({ expense }: ExpenseDetailProps) {
         leadingActions={leadingActions()}
         trailingActions={trailingActions()}
       >
-        <div className="bg-white rounded-lg shadow-lg p-10 w-full cursor-grab select-none flex gap-5 items-center mb-5 last-of-type:mb-0">
+        <div className="bg-white p-10 w-full border-b border-gray-200 cursor-grab select-none flex gap-5 items-center">
           <div>
             <img src={`icono_${categoryInfo.icon}.svg`} alt="Icono gastos" className="h-20 w-20" />
           </div>
