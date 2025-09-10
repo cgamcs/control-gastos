@@ -37,6 +37,7 @@ function ExpenseForm() {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
+    // Validar
     if(Object.values(expense).includes('')) {
       setError('Todos los campos son obligatorios')
 
@@ -46,7 +47,16 @@ function ExpenseForm() {
       return
     }
 
+    // Agregar un nuevo gasto
     dispatch({type: 'add-expense', payload: {expense}})
+
+    // Reiniciar el state
+    setExpense({
+      expenseName: '',
+      amount: 0,
+      category: '',
+      date: new Date()
+    })
   }
 
   return (
