@@ -5,7 +5,8 @@ export type BudgetActions =
   {type: 'add-budget', payload: {budget: number}} |
   {type: 'show-modal'} |
   {type: 'hidde-modal'} |
-  {type: 'add-expense', payload: {expense: DraftExpense}}
+  {type: 'add-expense', payload: {expense: DraftExpense}} |
+  {type: 'delte-expense', payload: {id: Expense['id']}}
 
 export type BudgetState = {
   budget: number
@@ -57,6 +58,15 @@ export const budgetReducer = (
       ...state,
       expenses: [...state.expenses, expense],
       modal: false
+    }
+  }
+
+  if(action.type === 'delte-expense') {
+    const expenses = state.expenses.filter(expense => expense.id !== action.payload.id)
+
+    return {
+      ...state,
+      expenses
     }
   }
 
