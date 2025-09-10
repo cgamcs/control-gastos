@@ -54,8 +54,12 @@ function ExpenseForm() {
       return
     }
 
-    // Agregar un nuevo gasto
-    dispatch({type: 'add-expense', payload: {expense}})
+    // Agregar o actualizar gasto
+    if(state.editingId) {
+      dispatch({type: 'update-expense', payload: {expense: {id: state.editingId, ...expense}}})
+    } else {
+      dispatch({type: 'add-expense', payload: {expense}})
+    }
 
     // Reiniciar el state
     setExpense({
@@ -71,7 +75,7 @@ function ExpenseForm() {
       <legend
         className="uppercase text-center text-2xl font-black p-2 border-b-2 border-b-gray-400 "
       >
-        Nuevo Gasto
+        {state.editingId ? 'Editar Gasto ' : 'Nuevo Gasto'}
       </legend>
 
       {error && <ErrorMessage>{error}</ErrorMessage> }
@@ -154,7 +158,7 @@ function ExpenseForm() {
       <input
         type="submit"
         className="bg-blue-600 cursor-pointer text-white font-bold rounded-lg w-full p-2 uppercase"
-        value="Registrar Gasto"
+        value={state.editingId ? 'Guardar Cambios' : 'Registrar Gasto'}
       />
     </form>
   )
