@@ -24,7 +24,7 @@ function ExpenseDetail({ expense }: ExpenseDetailProps) {
   
   const leadingActions = () => (
     <LeadingActions>
-      <SwipeAction onClick={() => console.info('swipe action triggered')}>
+      <SwipeAction onClick={() => dispatch({type: 'get-expense-by-id', payload: {id: expense.id}})}>
         Actualizar
       </SwipeAction>
     </LeadingActions>
@@ -47,7 +47,7 @@ function ExpenseDetail({ expense }: ExpenseDetailProps) {
         leadingActions={leadingActions()}
         trailingActions={trailingActions()}
       >
-        <div className="bg-white rounded-lg shadow-lg p-10 w-full flex gap-5 items-center mb-5 last-of-type:mb-0">
+        <div className="bg-white rounded-lg shadow-lg p-10 w-full cursor-grab select-none flex gap-5 items-center mb-5 last-of-type:mb-0">
           <div>
             <img src={`icono_${categoryInfo.icon}.svg`} alt="Icono gastos" className="h-20 w-20" />
           </div>
