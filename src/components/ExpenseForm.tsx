@@ -15,12 +15,14 @@ function ExpenseForm() {
     date: new Date()
   })
   const [error, setError] = useState('')
-  const {state, dispatch} = useBudget()
+  const [previousAmount, setPreviousAmount] = useState(0)
+  const {state, dispatch, remainingBudget} = useBudget()
 
   useEffect(() => {
     if(state.editingId) {
       const expenseEditing = state.expenses.filter(currentExpense => currentExpense.id === state.editingId)[0]
       setExpense(expenseEditing)
+      setPreviousAmount(expenseEditing.amount)
     }
   }, [state.editingId])
 
@@ -47,6 +49,16 @@ function ExpenseForm() {
     // Validar
     if(Object.values(expense).includes('')) {
       setError('Todos los campos son obligatorios')
+
+      setTimeout(() => {
+        setError('')
+      }, 3000);
+      return
+    }
+    
+    // Validar que no pase del limite
+    if((expense.amount - previousAmount) > remainingBudget) {
+      setError('Presupuesto revasado')
 
       setTimeout(() => {
         setError('')
