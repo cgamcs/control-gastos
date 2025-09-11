@@ -29,7 +29,7 @@ export default function ExpenseModal() {
             leaveFrom="opacity-75"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-black opacity-75" />
+            <div className="fixed inset-0 bg-black opacity-65" />
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y-auto">
