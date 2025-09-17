@@ -25,11 +25,11 @@ function BudgetForm() {
       onSubmit={handleSumbit}
     >
       <div className="flex flex-col space-y-5">
-        <label htmlFor="budget" className="text-4xl text-blue-600 font-bold text-center "></label>
+        <label htmlFor="budget" className="text-4xl text-indigo-600 font-bold text-center "></label>
         <input
           id="budget"
           type="number"
-          className="w-full bg-white border border-gray-200 p-2"
+          className="w-full bg-[#383939] text-white rounded-md p-2"
           placeholder="Define tu presupuesto"
           name="budget"
           value={budget}
@@ -39,7 +39,7 @@ function BudgetForm() {
 
       <input
         type="submit"
-        className="bg-blue-600 hover:bg-blue-700 w-full cursor-pointer p-2 font-bold text-white uppercase disabled:opacity-70"
+        className="bg-indigo-600 hover:bg-indigo-700 rounded-md w-full cursor-pointer p-2 font-bold text-white uppercase disabled:opacity-70 disabled:hover:bg-indigo-600 disabled:cursor-not-allowed"
         value="Definir presupuesto"
         disabled={isValid}
       />

@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "@headlessui/react": "^2.2.7",
+    "@shoelace-style/shoelace": "^2.20.1",
     "@tailwindcss/vite": "^4.1.13",
-    "lucide-react": "^0.542.0",
+    "cally": "^0.8.0",
+    "lucide-react": "^0.544.0",
     "prop-types": "15.8.1",
     "react": "^19.1.1",
     "react-calendar": "^6.0.0",

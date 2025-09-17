@@ -14,7 +14,7 @@ export default function ExpenseModal() {
           type="button"
           onClick={() =>  dispatch({type: 'show-modal'})}
         >
-          <Plus className='w-14 h-14 bg-blue-600 text-white p-2 rounded-full cursor-pointer' />
+          <Plus className='w-14 h-14 bg-indigo-600 text-white p-2 rounded-full cursor-pointer' />
         </button>
       </div>
 
@@ -29,7 +29,7 @@ export default function ExpenseModal() {
             leaveFrom="opacity-75"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-black opacity-65" />
+            <div className="fixed inset-0 bg-black opacity-75" />
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y-auto">
@@ -43,7 +43,7 @@ export default function ExpenseModal() {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-3xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="w-full max-w-3xl transform rounded-2xl bg-zinc-900 p-6 text-white text-left align-middle shadow-xl transition-all">
     
                   <ExpenseForm/>
     

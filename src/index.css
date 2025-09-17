@@ -13,4 +13,38 @@
 }
 .swipeable-list .swipe-action {
   @apply flex justify-center items-center
-} 
+}
+
+.flex {
+  display: flex;
+}
+.gap-xs {
+  gap: var(--sl-spacing-x-small);
+}
+.gap-l {
+  gap: var(--sl-spacing-large);
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.flex-1 {
+  flex: 1;
+}
+.align-end {
+  align-items: end;
+}
+.justify-center {
+  justify-content: center;
+}
+
+calendar-date {
+  button {
+    border: none;
+    border-radius: 0;
+  }
+}
+
+calendar-month {
+  --color-accent: #383939;
+  --color-text-on-accent: #fff;
+}

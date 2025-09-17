@@ -47,16 +47,16 @@ function ExpenseDetail({ expense }: ExpenseDetailProps) {
         leadingActions={leadingActions()}
         trailingActions={trailingActions()}
       >
-        <div className="p-5 w-full border-b border-gray-200 cursor-grab select-none flex gap-5 items-center">
+        <div className="p-5 w-full border-b border-[#18181b] cursor-grab select-none flex gap-5 items-center">
           <div>
             <img src={`icono_${categoryInfo.icon}.svg`} alt="Icono gastos" className="h-20 w-20" />
           </div>
 
           <div className="flex justify-between items-center w-full">
             <div>
-              <p className="text-slate-500 text-sm font-bold uppercase">{categoryInfo.name}</p>
-              <p>{expense.expenseName}</p>
-              <p className="text-slate-600 text-sm">{formatDate(expense.date!.toString())}</p>
+              <p className="text-gray-100 text-sm font-bold uppercase">{categoryInfo.name}</p>
+              <p className="text-gray-300">{expense.expenseName}</p>
+              <p className="text-gray-300 text-sm">{formatDate(expense.date!.toString())}</p>
             </div>
 
             <AmountDisplay amount={expense.amount} />

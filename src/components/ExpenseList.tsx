@@ -8,12 +8,12 @@ function ExpenseList() {
   const isEmpty = useMemo(() => filterExpenses.length === 0, [filterExpenses])
 
   return (
-    <div className="mt-10 bg-white p-10 shadow-lg rounded-lg">
+    <div className="mt-10 bg-zinc-900 p-10 shadow-lg rounded-lg">
       {isEmpty ? 
-        <p className="text-2xl text-gray-600 text-center font-bold">No hay gastos</p> 
+        <p className="text-2xl text-gray-200 text-center font-bold">No hay gastos</p> 
         :
         <>
-          <p className="text-2xl text-gray-600 font-bold mb-5">Listado de Gastos</p>
+          <p className="text-2xl text-gray-200 font-bold mb-5">Listado de Gastos</p>
 
           {filterExpenses.map(expense => (
             <ExpenseDetail

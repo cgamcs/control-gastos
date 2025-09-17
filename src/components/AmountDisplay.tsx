@@ -6,9 +6,9 @@ type AmountDisplayProps = {
 }
 function AmountDisplay({label, amount} : AmountDisplayProps) {
   return (
-    <p className="text-2xl text-blue-600 font-bold  ">
+    <p className="text-2xl text-indigo-500 font-bold  ">
       {label && (`${label}: `)}
-      <span className="text-black">{formatCurrency(amount)}</span>
+      <span className="text-gray-300">{formatCurrency(amount)}</span>
     </p>
   )
 }

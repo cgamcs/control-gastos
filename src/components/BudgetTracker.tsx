@@ -14,9 +14,9 @@ function BudgetTracker() {
         <CircularProgressbar
           value={percentage}
           styles={buildStyles({
-            pathColor: percentage === 100 ? '#DC2626' : '#3B82F6',
-            trailColor: '#F2F2F2',
-            textColor: percentage === 100 ? '#DC2626' : '#3B82F6',
+            pathColor: percentage === 100 ? '#DC2626' : '#605EFE',
+            trailColor: '#383939',
+            textColor: percentage === 100 ? '#DC2626' : '#605EFE',
             textSize: 8
           })}
           text={`${percentage}% Gastado`}
@@ -26,7 +26,7 @@ function BudgetTracker() {
       <div className="flex flex-col justify-center items-center gap-8">
         <button
           type="button"
-          className="bg-pink-600 w-full p-2 text-white uppercase font-bold rounded-lg cursor-pointer"
+          className="bg-violet-500 w-full p-2 text-white uppercase font-bold rounded-lg cursor-pointer"
           onClick={() => dispatch({type: 'reset-budget'})}
         >
           Resetear App
